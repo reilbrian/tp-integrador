@@ -92,22 +92,22 @@ public class Main {
 
             int puntaje=0;
 
-       if (golesanotados[0]>golesanotados[1] && resultadospro[0].equals("x")==true){
+       if (golesanotados[0]>golesanotados[1] && resultadospro[0].equals("x")){
            puntaje++;
        }
-       if (golesanotados[1]>golesanotados[0] && resultadospro[2].equals("x")==true){
+       if (golesanotados[1]>golesanotados[0] && resultadospro[2].equals("x")){
            puntaje++;
        }
-       if (golesanotados[0]==golesanotados[1] && resultadospro[1].equals("x")==true){
+       if (golesanotados[0]==golesanotados[1] && resultadospro[1].equals("x")){
            puntaje++;
        }
-       if (golesanotados[2]>golesanotados[3] &&  resultadospro[3].equals("x")==true){
+       if (golesanotados[2]>golesanotados[3] &&  resultadospro[3].equals("x")){
            puntaje++;
        }
-      if (golesanotados[3]>golesanotados[2] && resultadospro[5].equals("x")==true){
+      if (golesanotados[3]>golesanotados[2] && resultadospro[5].equals("x")){
            puntaje++;
        }
-      if (golesanotados[2]==golesanotados[3] && resultadospro[4].equals("x")==true){
+      if (golesanotados[2]==golesanotados[3] && resultadospro[4].equals("x")){
            puntaje++;
        }
         System.out.println("sumaste :"+puntaje+" puntos con tu pronostico");
