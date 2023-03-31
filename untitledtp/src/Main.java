@@ -1,7 +1,6 @@
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -21,48 +20,38 @@ public class Main {
         String lineares; //string que lee los resultados uno por uno
           BufferedReader br= new BufferedReader(new FileReader("resultados.csv"));
           lineares= br.readLine();
-          lineares= br.readLine();
-          String[] posicion=lineares.split(";");
           String[] nombresequipo= new String[4];
           int[] golesanotados= new int[4];
-          nombresequipo[0]=posicion[0];
-          golesanotados[0]= Integer.parseInt(posicion[1]);
-          golesanotados[1]= Integer.parseInt(posicion[2]);
-          nombresequipo[1]=posicion[3];
 
-          lineares= br.readLine();
-          posicion=lineares.split(";");
+          for(int i=0;(lineares= br.readLine())!=null;i++) {
+              String[] posicion = lineares.split(";");
 
-          nombresequipo[2]=posicion[0];
-          golesanotados[2]=Integer.parseInt(posicion[1]);
-          golesanotados[3]=Integer.parseInt(posicion[2]);
-          nombresequipo[3]=posicion[3];
+              nombresequipo[i] = posicion[0];
+              golesanotados[i] = Integer.parseInt(posicion[1]);
+              nombresequipo[i+1] = posicion[2];
+              golesanotados[i+1] = Integer.parseInt(posicion[3]);
+              i++;
+          }
 
 
          // lectura del pronostico de los partidos
 
         String lineapro;
         BufferedReader br1= new BufferedReader(new FileReader("pronostico.csv"));
-        lineapro= br1.readLine();
-        lineapro= br1.readLine();
-        String[] posicion2=lineapro.split(";");
         String[] resultadospro = new String[6];
-
-        resultadospro[0]=posicion2[1];
-        resultadospro[1]=posicion2[2];
-        resultadospro[2]=posicion2[3];
-
         lineapro= br1.readLine();
-        posicion2=lineapro.split(";");
 
-        resultadospro[3]=posicion2[1];
-        resultadospro[4]=posicion2[2];
-        resultadospro[5]=posicion2[3];
+        for(int i=0;(lineapro = br1.readLine())!=null;i++) {
 
+            String[] posicion2 = lineapro.split(";");
 
+            resultadospro[i] = posicion2[1];
+            resultadospro[i+1] = posicion2[2];
+            resultadospro[i+2] = posicion2[3];
+            i++;i++;
+        }
 
-
-            ronda ronda1 = new ronda();
+        ronda ronda1 = new ronda();
 
             //       lista de equipos
             equipo equipo1 = new equipo(
