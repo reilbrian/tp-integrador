@@ -15,13 +15,14 @@ public class Main {
         System.out.println("Este es nuestro string path:" + resultados);
         System.out.println("Este es nuestro string path:" + pronostico);
 
-//       lectura de los resultados de los partidos
+        //       lectura de los resultados de los partidos
 
-        String lineares; //string que lee los resultados uno por uno
+          String lineares; //string que lee los resultados uno por uno
           BufferedReader br= new BufferedReader(new FileReader("resultados.csv"));
           lineares= br.readLine();
-          String[] nombresequipo= new String[4];
-          int[] golesanotados= new int[4];
+          String[] nombresequipo= new String[100];
+          int[] golesanotados= new int[100];
+          int equiposcant=0;
 
           for(int i=0;(lineares= br.readLine())!=null;i++) {
               String[] posicion = lineares.split(";");
@@ -30,9 +31,24 @@ public class Main {
               golesanotados[i] = Integer.parseInt(posicion[1]);
               nombresequipo[i+1] = posicion[2];
               golesanotados[i+1] = Integer.parseInt(posicion[3]);
-              i++;
+              i++;equiposcant=equiposcant+2;
           }
 
+          //formador de equipos
+          equipo equipos[]=new equipo[equiposcant];
+          partido partidos[]=new partido[equiposcant];
+          ronda ronda1 = new ronda();
+          for (int i=0;i<equiposcant;i++){
+              equipos[i]=new equipo(nombresequipo[i],i);
+          }
+
+          //formador de partidos
+          int j=0;
+          for (int i=0;i<(equiposcant/2);i++){
+              partidos[i]=new partido(equipos[j],equipos[j+1],golesanotados[j],golesanotados[j+1]);
+              ronda1.partidos.add(partidos[i]);
+              j=j+2;
+          }
 
          // lectura del pronostico de los partidos
 
@@ -48,38 +64,12 @@ public class Main {
             resultadospro[i] = posicion2[1];
             resultadospro[i+1] = posicion2[2];
             resultadospro[i+2] = posicion2[3];
-            i++;i++;
+            i=i+2;
         }
 
-        ronda ronda1 = new ronda();
+        ronda1.ListarGanadores();
 
-            //       lista de equipos
-            equipo equipo1 = new equipo(
-                    nombresequipo[0],
-                    "esta es la seleccion de Messi",
-                    1);
-            equipo equipo2 = new equipo(
-                    nombresequipo[1],
-                    "la que antes se preparo para el mundial",
-                    2);
-            equipo equipo3 = new equipo(
-                    nombresequipo[2],
-                    "de las mejores de concacaf",
-                    3);
-            equipo equipo4 = new equipo(
-                    nombresequipo[3],
-                    "esta es la seleccion lewandowsky",
-                    4);
-
-            //      lista de partidos
-            partido partido1 = new partido(equipo1, equipo2, golesanotados[0], golesanotados[1]);
-            partido partido2 = new partido(equipo3, equipo4, golesanotados[2], golesanotados[3]);
-
-            ronda1.partidos.add(partido1);
-            ronda1.partidos.add(partido2);
-            ronda1.ListarGanadores();
-
-            int puntaje=0;
+        int puntaje=0;
 
        if (golesanotados[0]>golesanotados[1] && resultadospro[0].equals("x")){
            puntaje++;
@@ -99,6 +89,6 @@ public class Main {
       if (golesanotados[2]==golesanotados[3] && resultadospro[4].equals("x")){
            puntaje++;
        }
-        System.out.println("sumaste :"+puntaje+" puntos con tu pronostico");
+        System.out.println("sumaste :"+puntaje+" puntos con tu pronostico ");
     }
 }
