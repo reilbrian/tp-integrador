@@ -1,5 +1,7 @@
-﻿EQUIPO 1;EQUIPO 1 Goles;EQUIPO 2;EQUIPO 2 goles
-Argentina;1;Arabia;2
-Polonia;1;Mexico;1
-Argentina;2;Mexico;0
-Polonia;2;Arabia;0
+﻿EQUIPO 1;EQUIPO 1 Goles;EQUIPO 2;EQUIPO 2 goles;Ronda
+Argentina;1;Arabia;2;
+Polonia;2;Mexico;2;
+Argentina;2;Mexico;0;
+Polonia;2;Arabia;0;
+francia;2;inglaterra;1;
+portugal;1;uruguay;0;
