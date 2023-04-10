@@ -90,15 +90,18 @@ public class Main {
         //detecta los pronosticos
         int[] puntaje = new int[10];
        j=0; z=0;String aux=pronosticos[0].getapostador();
-      for (int i = 0; i <6; i++) {
-          System.out.println(partidos[i].getGanador()+pronosticos[i].getapuesta());
+      for (int i = 0; i <pronosticos.length; i++) {
 
+          if(aux.equals(nombres.get(i))){}
+          else {
+              j++;z=0;aux=pronosticos[i].getapostador();
+          }
           if (partidos[z].getGanador().equalsIgnoreCase(pronosticos[i].getapuesta()))  {
                 puntaje[j]++;
-              System.out.println("aaaa");
+                System.out.println("aaaa");
           }
           z++;
         }
-        System.out.println("sumaste :" + puntaje[0] + " puntos con tu pronostico "+aux);
+        System.out.println("sumaste :" + puntaje[1] + " puntos con tu pronostico "+aux);
     }
 }
