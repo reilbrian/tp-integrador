@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -56,32 +57,48 @@ public class Main {
         String lineapro;
         BufferedReader br1 = new BufferedReader(new FileReader(pronostico));
         String[] resultadospro = new String[100];
-        String[] nombres=new String[100];
+        String[] equiposs=new String[100];
+        ArrayList<String> nombres=new ArrayList<String>();
+
         lineapro = br1.readLine();
         int proncant = 0;
-
+           j=0;
         for (int i = 0; (lineapro = br1.readLine()) != null; i++) {
 
             String[] posicion = lineapro.split(";");
-
+            equiposs[j]=posicion[0];
             resultadospro[i] = posicion[1];
             resultadospro[i + 1] = posicion[2];
             resultadospro[i + 2] = posicion[3];
+            equiposs[j+1]=posicion[4];
+            nombres.add(posicion[5]);
             i = i + 2;
+            j=j+2;
             proncant++;
+        }
+        j=0;int z=0;
+        pronostico[] pronosticos= new pronostico[proncant];
+        for (int i = 0; i < proncant; i++) {
+            pronosticos[i] = new pronostico
+                    (equiposs[z],resultadospro[j], resultadospro[j + 1],resultadospro[j + 2],equiposs[z+1],nombres.get(i));
+            System.out.println(pronosticos[i].getapuesta());
+            j=j+3;z=z+2;
         }
 
         ronda1.ListarGanadores();
-        //detecta los pronosticos
-        int puntaje = 0;
-        j=0;int z=0; String aux=nombres[0];
 
-        for (int i = 0; i <proncant; i++) {
-            if (golesanotados[j] >  golesanotados[j+1] && resultadospro[z].equals("x"))   {puntaje++;}
-            if (golesanotados[j] == golesanotados[j+1] && resultadospro[z+1].equals("x")) {puntaje++;}
-            if (golesanotados[j] <  golesanotados[j+1] && resultadospro[z+2].equals("x")) {puntaje++;}
-            j=j+2;z=z+3;
+        //detecta los pronosticos
+        int[] puntaje = new int[10];
+       j=0; z=0;String aux=pronosticos[0].getapostador();
+      for (int i = 0; i <6; i++) {
+          System.out.println(partidos[i].getGanador()+pronosticos[i].getapuesta());
+
+          if (partidos[z].getGanador().equalsIgnoreCase(pronosticos[i].getapuesta()))  {
+                puntaje[j]++;
+              System.out.println("aaaa");
+          }
+          z++;
         }
-            System.out.println("sumaste :" + puntaje + " puntos con tu pronostico ");
+        System.out.println("sumaste :" + puntaje[0] + " puntos con tu pronostico "+aux);
     }
 }

@@ -16,7 +16,7 @@ public class partido {
 
 
     public String getGanador() {
-        String empate ="sin ganador";
+        String empate ="empate";
         if (goles1 > goles2) {
            return equipo1.getNombre();
 
