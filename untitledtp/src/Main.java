@@ -85,8 +85,8 @@ public class Main {
             j=j+3;z=z+2;
         }
 
-        ronda1.ListarGanadores();
 
+        ronda1.ListarGanadores();
         //detecta los pronosticos
         int[] puntaje = new int[10];
        j=0; z=0;String aux=pronosticos[0].getapostador();
@@ -94,14 +94,15 @@ public class Main {
 
           if(aux.equals(nombres.get(i))){}
           else {
+              System.out.println(aux+" sumo :" + puntaje[j] + " puntos");
               j++;z=0;aux=pronosticos[i].getapostador();
           }
+
           if (partidos[z].getGanador().equalsIgnoreCase(pronosticos[i].getapuesta()))  {
                 puntaje[j]++;
-                System.out.println("aaaa");
           }
           z++;
         }
-        System.out.println("sumaste :" + puntaje[1] + " puntos con tu pronostico "+aux);
+        System.out.println(aux+" sumo :" + puntaje[j] + " puntos");
     }
 }

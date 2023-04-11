@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-public class ronda {
+public class ronda{
+
     public ArrayList<partido> partidos = new ArrayList<partido>();
     public void ListarGanadores()
     {
